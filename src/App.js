@@ -1,4 +1,12 @@
-import React, {useState} from "react";
+/**
+Author - Brijesh Pandey
+Git - https://bitbucket.org/__brijesh/
+**/
+
+// Add environment variable for device testing,
+// call defineCustomElements() for web devices
+
+import React, {useState, useEffect} from "react";
 
 import {
   IonContent,
@@ -19,28 +27,33 @@ import {
 } from "@ionic/react";
 import { pin, wifi, wine, warning, walk } from "ionicons/icons";
 
-// import {Plugins, CameraResultType} from '@capacitor/core';
-
 import { Camera, CameraResultType } from '@capacitor/camera';
 
-// const {Camera} = Plugins;
+import {Capacitor} from '@capacitor/core';
 
+import {defineCustomElements} from '@ionic/pwa-elements/loader';
 
 
 const App = () => {
   const [image, setImage] = useState();
+  const isCameraAvailable = Capacitor.isPluginAvailable("Camera");
+
+  useEffect(() => {
+    console.log(image);
+  }, [image]);
+
+  defineCustomElements(window);
 
   const takePicture = async () => {
-    const image = Camera.getPhoto({
+    const image = await Camera.getPhoto({
       quality: 90,
       allowEditing: false,
-      resultType: CameraResultType.Base64
+      resultType: CameraResultType.Uri
     });
-
-    let imageUrl = `data:image/jpeg:base64 ${(await image).base64String}`;
-
+    let imageUrl = image.webPath;
     setImage(imageUrl);
   }
+
   return (
     <IonPage>
       <IonHeader>
@@ -101,13 +114,8 @@ const App = () => {
 
         <IonItem>
           <IonButton color="primary" onClick={() => takePicture()}>Take Photo</IonButton>
-          {image && (
-            <IonImg src={image} />
-          )}
-
-
-          </IonItem>
-
+          {image && (<IonImg src={image} />)}
+        </IonItem>
       </IonContent>
     </IonPage>
   );
