@@ -13,19 +13,19 @@ const propTypes = {
   formData: PropTypes.object.isRequired,
   setFormData: PropTypes.func.isRequired,
   updateStep: PropTypes.func.isRequired,
-  handleImageClick: PropTypes.func.isRequired
+  handleFormData: PropTypes.func.isRequired
 };
 
 const PoiContainer = ({
   formData,
   setFormData,
   updateStep,
-  handleImageClick
+  handleFormData
 }) => {
   return (
     <Poi
       updateStep={updateStep}
-      handleImageClick={handleImageClick}
+      handleFormData={handleFormData}
     />
   );
 };

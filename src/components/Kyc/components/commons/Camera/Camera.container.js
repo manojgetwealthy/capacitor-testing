@@ -18,7 +18,7 @@ import CameraComponent from "./Camera";
 
 const CameraContainer = ({
   keyName,
-  handleImageClick
+  handleFormData
 }) => {
   const [image, setImage] = useState();
 
@@ -31,7 +31,7 @@ const CameraContainer = ({
   defineCustomElements(window);
 
   const saveImageData = () => {
-    handleImageClick(keyName, image);
+    handleFormData(keyName, image);
   };
 
   const takePicture = async () => {

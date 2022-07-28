@@ -15,12 +15,12 @@ const SelfieContainer = ({
   formData,
   setFormData,
   updateStep,
-  handleImageClick
+  handleFormData
 }) => {
   return (
     <Selfie
       updateStep={updateStep}
-      handleImageClick={handleImageClick}
+      handleFormData={handleFormData}
     />
   );
 };

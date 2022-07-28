@@ -16,7 +16,10 @@ import {
 
 import {
   Selfie,
-  Poi
+  Poi,
+  Poa,
+  InputData,
+  Summary
 } from "./components"
 
 const propTypes = {
@@ -31,7 +34,7 @@ const Kyc = ({
   setFormData,
   step,
   updateStep,
-  handleImageClick
+  handleFormData
 }) => {
   let activeComponent;
 
@@ -42,7 +45,7 @@ const Kyc = ({
           updateStep={updateStep}
           setFormData={setFormData}
           formData={formData}
-          handleImageClick={handleImageClick}
+          handleFormData={handleFormData}
         />
       )
     break;
@@ -53,24 +56,56 @@ const Kyc = ({
           updateStep={updateStep}
           setFormData={setFormData}
           formData={formData}
-          handleImageClick={handleImageClick}
+          handleFormData={handleFormData}
         />
       )
     break;
+
+    case 3:
+      activeComponent = (
+        <Poa
+          updateStep={updateStep}
+          setFormData={setFormData}
+          formData={formData}
+          handleFormData={handleFormData}
+        />
+      )
+    break;
+
+    case 4:
+      activeComponent = (
+        <InputData
+          updateStep={updateStep}
+          formData={formData}
+          handleFormData={handleFormData}
+        />
+      )
+    break;
+
+    case 5:
+      activeComponent = (
+        <Summary
+          updateStep={updateStep}
+          formData={formData}
+          setFormData={setFormData}
+        />
+      )
+    break;
+
     default:
       activeComponent = (
         <Selfie
           updateStep={updateStep}
           setFormData={setFormData}
           formData={formData}
-          handleImageClick={handleImageClick}
+          handleFormData={handleFormData}
         />
       )
     break;
   }
 
   return (
-    <IonPage>
+    <IonPage className="custom-ion-page">
       <Wrapper>
         <Title>KYC Flow</Title>
         <SubHeader>Complete your kyc in 5 easy steps with us.</SubHeader>

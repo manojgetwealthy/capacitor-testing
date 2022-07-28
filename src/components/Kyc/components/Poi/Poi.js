@@ -10,22 +10,16 @@ import styled from "styled-components";
 import Camera from "../commons";
 
 const Poi = ({
-  handleImageClick,
+  handleFormData,
   updateStep
 }) => {
   return (
     <Wrapper>
       <Title>Please take a picture of your proof of identity or upload it</Title>
       <Camera
-        handleImageClick={handleImageClick}
+        handleFormData={handleFormData}
         keyName="poi"
       />
-
-<Camera
-        handleImageClick={handleImageClick}
-        keyName="poi"
-      />
-
       <NextButton
         onClick={() => updateStep(3)}
       >

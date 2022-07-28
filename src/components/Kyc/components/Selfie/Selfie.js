@@ -10,14 +10,14 @@ import styled from "styled-components";
 import Camera from "../commons";
 
 const Selfie = ({
-  handleImageClick,
+  handleFormData,
   updateStep
 }) => {
   return (
     <Wrapper>
       <Title>Please take your selfie in a well lit environment</Title>
       <Camera
-        handleImageClick={handleImageClick}
+        handleFormData={handleFormData}
         keyName="selfie"
       />
       <NextButton

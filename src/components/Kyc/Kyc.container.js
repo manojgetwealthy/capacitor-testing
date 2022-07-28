@@ -3,22 +3,29 @@ Author - Brijesh Pandey
 Git - https://bitbucket.org/__brijesh/
 **/
 
-import React, {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
 
 import Kyc from "./Kyc";
 
 const KycContainer = () => {
-  const [step, updateStep] = useState(2);
+  const [step, updateStep] = useState(5);
   const [formData, setFormData] = useState({
     selfie: null,
     poi: null,
     poa: null,
-    inputData: null
+    userData: null
   });
 
   console.log(formData)
+  // const isInitialRender = useRef();
 
-  const handleImageClick = (name, value) => {
+
+  // useEffect(() => {
+  //   if (isI)
+  //   alert(navigator.userAgent)
+  // }, []);
+
+  const handleFormData = (name, value) => {
     setFormData({
       ...formData,
       [name]: value
@@ -31,7 +38,7 @@ const KycContainer = () => {
       setFormData={setFormData}
       step={step}
       updateStep={updateStep}
-      handleImageClick={handleImageClick}
+      handleFormData={handleFormData}
     />
   );
 };
