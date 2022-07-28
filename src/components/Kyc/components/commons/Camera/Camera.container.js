@@ -28,7 +28,7 @@ const CameraContainer = ({
     }
   }, [image]);
 
-  defineCustomElements(window);
+  // defineCustomElements(window);
 
   const saveImageData = () => {
     handleFormData(keyName, image);
