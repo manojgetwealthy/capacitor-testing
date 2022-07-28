@@ -8,7 +8,7 @@ import React, {useState, useEffect, useRef} from "react";
 import Kyc from "./Kyc";
 
 const KycContainer = () => {
-  const [step, updateStep] = useState(5);
+  const [step, updateStep] = useState(1);
   const [formData, setFormData] = useState({
     selfie: null,
     poi: null,

@@ -18,10 +18,24 @@ const Summary = ({
   updateStep,
   formData
 }) => {
+  const userInputData = formData?.userData;
+
+  const content = Object.keys(userInputData).map((key) => {
+    return (
+      <RowContainer
+        className="ion-padding"
+        slot="content"
+      >
+        <KeyTitle>{key}</KeyTitle>
+        <Value>{userInputData[key]}</Value>
+      </RowContainer>
+    );
+  })
+
+
   return (
     <Wrapper>
       <Title>Please review and submit the details</Title>
-
 
       <IonAccordionGroup>
       <IonAccordion value="first">
@@ -57,6 +71,13 @@ const Summary = ({
           src={formData.poa}
         />
       </IonAccordion>
+      <IonAccordion value="fourth">
+        <IonItem slot="header" color="light">
+          <IonLabel>Perosonal information</IonLabel>
+        </IonItem>
+        {content}
+      </IonAccordion>
+
     </IonAccordionGroup>
 
 
@@ -90,6 +111,19 @@ const Title = styled.h2`
   font-size: 1.8rem;
   color: #7E7E7E;
   margin: 2rem 0;
+`;
+
+const RowContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const KeyTitle = styled.p`
+  font-size: 1.4rem;
+`;
+
+const Value = styled.p`
+  font-size: 1.4rem;
 `;
 
 const Image = styled.img``;
