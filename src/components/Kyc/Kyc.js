@@ -114,11 +114,14 @@ const Kyc = ({
   return (
     <IonPage className="custom-ion-page">
       <Wrapper>
-        <Title>KYC Flow</Title>
-        <SubHeader>Complete your kyc in 5 easy steps with us.</SubHeader>
         {
-          !(activeComponent === 6) &&
-          <IonProgressBar color="primary" value={0.2 * step} />
+          !(step === 6) && (
+            <>
+              <Title>KYC Flow</Title>
+              <SubHeader>Complete your kyc in 5 easy steps with us.</SubHeader>
+              <IonProgressBar color="primary" value={0.2 * step} />
+            </>
+          )
         }
         {activeComponent}
       </Wrapper>
