@@ -16,15 +16,6 @@ const KycContainer = () => {
     userData: null
   });
 
-  console.log(formData)
-  // const isInitialRender = useRef();
-
-
-  // useEffect(() => {
-  //   if (isI)
-  //   alert(navigator.userAgent)
-  // }, []);
-
   const handleFormData = (name, value) => {
     setFormData({
       ...formData,
