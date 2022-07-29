@@ -10,25 +10,35 @@ import {
   CameraResultType
 } from '@capacitor/camera';
 
-import {Capacitor} from '@capacitor/core';
-
 import {defineCustomElements} from '@ionic/pwa-elements/loader';
 
 import CameraComponent from "./Camera";
+
+import {
+  checkIsNativeDevice
+} from "helpers";
 
 const CameraContainer = ({
   keyName,
   handleFormData
 }) => {
-  const [image, setImage] = useState();
-
+  const [image, setImage] = useState(); 
   useEffect(() => {
     if (image?.length > 0) {
       saveImageData();
     }
   }, [image]);
 
-  // defineCustomElements(window);
+  useEffect(() => {
+    handleDeviceCamera();
+  }, []);
+
+  const handleDeviceCamera = async () => {
+    const isNativeDevice = await checkIsNativeDevice();
+    if (!isNativeDevice) {
+        defineCustomElements(window);
+    }
+  };
 
   const saveImageData = () => {
     handleFormData(keyName, image);

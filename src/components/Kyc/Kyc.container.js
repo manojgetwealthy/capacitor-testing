@@ -3,7 +3,7 @@ Author - Brijesh Pandey
 Git - https://bitbucket.org/__brijesh/
 **/
 
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState} from "react";
 
 import Kyc from "./Kyc";
 
