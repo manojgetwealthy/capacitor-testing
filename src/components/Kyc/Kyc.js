@@ -19,7 +19,8 @@ import {
   Poi,
   Poa,
   InputData,
-  Summary
+  Summary,
+  Thankyou
 } from "./components"
 
 const propTypes = {
@@ -92,6 +93,12 @@ const Kyc = ({
       )
     break;
 
+    case 6:
+      activeComponent = (
+        <Thankyou />
+      )
+    break;
+
     default:
       activeComponent = (
         <Selfie
@@ -109,7 +116,10 @@ const Kyc = ({
       <Wrapper>
         <Title>KYC Flow</Title>
         <SubHeader>Complete your kyc in 5 easy steps with us.</SubHeader>
-        <IonProgressBar color="primary" value={0.2 * step} />
+        {
+          !(activeComponent === 6) &&
+          <IonProgressBar color="primary" value={0.2 * step} />
+        }
         {activeComponent}
       </Wrapper>
     </IonPage>

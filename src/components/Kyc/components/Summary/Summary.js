@@ -80,11 +80,7 @@ const Summary = ({
 
     </IonAccordionGroup>
 
-
-
-      <SubmitButton
-        // onClick={() => updateStep(6)}
-      >
+      <SubmitButton onClick={() => updateStep(6)}>
         Submit
       </SubmitButton>
     </Wrapper>

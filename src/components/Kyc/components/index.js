@@ -9,11 +9,13 @@ import Poi from "./Poi";
 import Poa from "./Poa";
 import InputData from "./InputData";
 import Summary from "./Summary";
+import Thankyou from "./Thankyou";
 
 export {
   Selfie,
   Poi,
   Poa,
   InputData,
-  Summary
+  Summary,
+  Thankyou
 };
