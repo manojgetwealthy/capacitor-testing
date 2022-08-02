@@ -16,7 +16,8 @@ import {
 
 const Summary = ({
   updateStep,
-  formData
+  formData,
+  signatureImageCanvas
 }) => {
   const userInputData = formData?.userData;
 
@@ -27,7 +28,19 @@ const Summary = ({
         slot="content"
       >
         <KeyTitle>{key}</KeyTitle>
-        <Value>{userInputData[key]}</Value>
+        {
+          key === "signature" ? (
+            <Image
+              alt="your signature"
+              className="ion-padding sign-image"
+              slot="content"
+              ref={signatureImageCanvas}
+              src={userInputData[key]}
+            />
+          ) : (
+            <Value>{userInputData[key]}</Value>
+          )
+        }
       </RowContainer>
     );
   })
@@ -87,7 +100,12 @@ const Summary = ({
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  .sign-image {
+    width: 20%;
+    padding: 0;
+  }
+`;
 
 const SubmitButton = styled.div`
   background-color: #6725F4;

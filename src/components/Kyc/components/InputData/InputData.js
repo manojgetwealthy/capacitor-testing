@@ -7,19 +7,19 @@ import React from "react";
 
 import styled from "styled-components";
 
+import SignatureCanvas from "react-signature-canvas";
+
 import {
   IonLabel,
   IonItem,
-  IonInput,
-  IonToggle,
-  IonCheckbox,
-  IonContent
+  IonInput
 } from '@ionic/react';
 
 const InputData = ({
   userData,
   handleUserInput,
-  handleSubmitUserData
+  handleSubmitUserData,
+  signatureRef
 }) => {
   return (
     <Wrapper>
@@ -82,6 +82,15 @@ const InputData = ({
       />
     </IonItem>
 
+    <IonLabel className="sign-text">Please Sign Here</IonLabel>
+    <SignatureContainer>
+      <SignatureCanvas
+        penColor="black"
+        canvasProps={{className: "signature-canvas"}}
+        ref={signatureRef}
+      />
+    </SignatureContainer>
+
       <NextButton
         onClick={handleSubmitUserData}
       >
@@ -91,7 +100,29 @@ const InputData = ({
   );
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  .sign-text {
+    font-size: 1.6rem;
+    opacity: 0.75;
+    display: flex;
+    margin-left: 1.4rem;
+    margin-top: 4rem;
+  }
+`;
+
+const SignatureContainer = styled.div`
+  background: #d7d7d7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  border-radius: 1rem;
+
+  .signature-canvas {
+    width: 100%;
+    min-height: 300px;
+  }
+`;
 
 const NextButton = styled.div`
   background-color: #6725F4;
