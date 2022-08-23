@@ -8,11 +8,14 @@ import React from "react";
 import Kyc from "./components"
 
 import styled from "styled-components";
+import {IonApp} from "@ionic/react";
 
 const App = () => {
   return (
     <ComponentsWrapper>
-      <Kyc />
+      <IonApp>
+        <Kyc />
+      </IonApp>
     </ComponentsWrapper>
   );
 };
